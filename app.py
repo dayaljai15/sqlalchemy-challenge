@@ -8,28 +8,18 @@ from sqlalchemy import create_engine, func
 
 from flask import Flask, jsonify
 
-#################################################
-# Database Setup
-#################################################
 engine = create_engine("sqlite:///hawaii.sqlite")
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 
-# Base.metadata.tables # Check tables, not much useful
-# Base.classes.keys() # Get the table names
 
 Measurement = Base.classes.measurement
 Station = Base.classes.station
 
-#################################################
-# Flask Setup
-#################################################
+# Flask
 app = Flask(__name__)
 
-
-#################################################
 # Flask Routes
-#################################################
 
 @app.route("/")
 def welcome():
